@@ -8,5 +8,10 @@
   <body>
     <h1>サンプルテンプレート</h1>
     <p th:text="${message}"></p>
+    <form method="post" action="/plus">
+      <input type="number" name="num1" /> +
+      <input type="number" name="num2" />
+      <input type="submit" value="実行" />
+    </form>
   </body>
 </html>
