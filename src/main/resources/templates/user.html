@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User</title>
+  </head>
+  <body>
+    <h1>ユーザーリスト</h1>
+    <hr />
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>メール</th>
+      </tr>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+      </tr>
+    </table>
+    <div>
+      <a th:href="@{/}">戻る</a>
+    </div>
+  </body>
+</html>
