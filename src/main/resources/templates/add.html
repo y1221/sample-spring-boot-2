@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add</title>
+  </head>
+  <body>
+    <h1>ユーザー登録</h1>
+    <form th:action="@{/user/add}" th:object="${newUser}" method="post">
+      <div>
+        <label for="name">名前</label>
+        <input type="text" th:field="*{name}" />
+      </div>
+      <div>
+        <label for="name">メール</label>
+        <input type="text" th:field="*{email}" />
+      </div>
+      <input type="submit" value="登録" />
+    </form>
+    <div>
+      <a th:href="@{/user}">戻る</a>
+    </div>
+  </body>
+</html>
