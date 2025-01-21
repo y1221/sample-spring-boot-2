@@ -13,11 +13,18 @@
         <th>ID</th>
         <th>名前</th>
         <th>メール</th>
+        <th></th>
       </tr>
       <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.email}"></td>
+        <td>
+          <form th:action="@{/user/edit}" method="get">
+            <input type="submit" value="編集" />
+            <input type="hidden" name="id" th:value="${user.id}" />
+          </form>
+        </td>
       </tr>
     </table>
     <div>

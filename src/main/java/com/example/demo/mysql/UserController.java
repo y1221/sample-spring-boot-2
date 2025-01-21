@@ -5,7 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,6 +40,22 @@ public class UserController {
     @PostMapping("/add")
     @Transactional(readOnly = false)
     public ModelAndView add(@ModelAttribute("newUser") User user) {
+        userRepository.saveAndFlush(user);
+        return new ModelAndView("redirect:/user");
+    }
+
+    // ユーザー編集
+    @GetMapping("/edit")
+    public ModelAndView edit(@RequestParam int id, ModelAndView mav) {
+        User user = userRepository.findById(id).orElse(new User());
+        mav.addObject("editUser", user);
+        mav.setViewName("edit");
+        return mav;
+    }
+
+    @PostMapping("/edit")
+    @Transactional(readOnly = false)
+    public ModelAndView edit(@ModelAttribute("editUser") User user) {
         userRepository.saveAndFlush(user);
         return new ModelAndView("redirect:/user");
     }
