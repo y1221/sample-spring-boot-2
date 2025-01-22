@@ -14,6 +14,7 @@
         <th>名前</th>
         <th>メール</th>
         <th></th>
+        <th></th>
       </tr>
       <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
@@ -22,6 +23,12 @@
         <td>
           <form th:action="@{/user/edit}" method="get">
             <input type="submit" value="編集" />
+            <input type="hidden" name="id" th:value="${user.id}" />
+          </form>
+        </td>
+        <td>
+          <form th:action="@{/user/delete}" method="post">
+            <input type="submit" value="削除" />
             <input type="hidden" name="id" th:value="${user.id}" />
           </form>
         </td>
