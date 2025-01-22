@@ -59,4 +59,12 @@ public class UserController {
         userRepository.saveAndFlush(user);
         return new ModelAndView("redirect:/user");
     }
+
+    // ユーザー削除
+    @PostMapping("/delete")
+    @Transactional(readOnly = false)
+    public ModelAndView delete(@RequestParam int id) {
+        userRepository.deleteById(id);
+        return new ModelAndView("redirect:/user");
+    }
 }
