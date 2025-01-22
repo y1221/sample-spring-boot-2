@@ -27,7 +27,7 @@
           </form>
         </td>
         <td>
-          <form th:action="@{/user/delete}" method="post">
+          <form class="deleteForm" th:action="@{/user/delete}" method="post">
             <input type="submit" value="削除" />
             <input type="hidden" name="id" th:value="${user.id}" />
           </form>
@@ -42,5 +42,6 @@
     <div>
       <a th:href="@{/}">戻る</a>
     </div>
+    <script th:src="@{/js/user.js}"></script>
   </body>
 </html>
