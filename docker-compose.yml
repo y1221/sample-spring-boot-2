@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/spring_mysql_sample_docker?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: yuto_docker
+      SPRING_DATASOURCE_PASSWORD: Yokada@11_docker
+    networks:
+      - backend
+
+  db:
+    image: mysql:8.0
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_DATABASE: spring_mysql_sample_docker
+      MYSQL_USER: yuto_docker
+      MYSQL_PASSWORD: Yokada@11_docker
+      MYSQL_ROOT_PASSWORD: Yokada@11_root_docker
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  db-data:
+
+networks:
+  backend:
