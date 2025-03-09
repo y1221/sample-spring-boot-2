@@ -8,6 +8,7 @@ services:
     depends_on:
       - db
     environment:
+      SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/spring_mysql_sample_docker?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: yuto_docker
       SPRING_DATASOURCE_PASSWORD: Yokada@11_docker
