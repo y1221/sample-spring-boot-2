@@ -1,6 +1,7 @@
 services:
   app:
-    build: .
+    image: okayu11/sample-spring-boot-2-app:latest
+    pull_policy: always
     ports:
       - '8080:8080'
     depends_on:
